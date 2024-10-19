@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สร้างใบแจ้งหนี้</title>
+</head>
+<body>
+    <h1>สร้างใบแจ้งหนี้</h1>
+    <form action="/generate-invoice" method="POST">
+        <div>
+            <label for="customerName">ชื่อลูกค้า:</label>
+            <input type="text" id="customerName" name="customerName" required>
+        </div>
+        <div>
+            <label for="amount">จำนวนเงิน:</label>
+            <input type="number" id="amount" name="amount" step="0.01" required>
+        </div>
+        <div>
+            <label for="dueDate">วันครบกำหนด:</label>
+            <input type="date" id="dueDate" name="dueDate" required>
+        </div>
+        <button type="submit">สร้าง PDF</button>
+    </form>
+</body>
+</html>

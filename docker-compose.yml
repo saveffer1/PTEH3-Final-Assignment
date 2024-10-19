@@ -1,0 +1,40 @@
+services:
+  webservice:
+    build:
+      context: ./webservice
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - DB_HOST=dbservice
+      - DB_PORT=5432
+      - DB_NAME=store
+      - DB_USER=postgres
+      - DB_PASSWORD=secret
+      - SESSION_SECRET=your_session_secret
+      - GOTENBERG_URL=http://pdfservice:1337
+    depends_on:
+      - dbservice
+      - pdfservice
+
+  dbservice:
+    build:
+      context: ./dbservice
+      dockerfile: Dockerfile
+    environment:
+      - POSTGRES_DB=store
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=secret
+    ports:
+      - "5432:5432"
+
+  pdfservice:
+    build:
+      context: ./pdfservice
+      dockerfile: Dockerfile
+    privileged: true
+    ports:
+      - "1337:3000"
+
+volumes:
+  postgres_data:

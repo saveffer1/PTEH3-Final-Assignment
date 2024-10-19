@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เข้าสู่ระบบ</title>
+</head>
+<body>
+    <h1>เข้าสู่ระบบ</h1>
+    <% if (locals.error) { %>
+        <p style="color: red;"><%= error %></p>
+    <% } %>
+    <form action="/login" method="POST">
+        <div>
+            <label for="email">อีเมล:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="password">รหัสผ่าน:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">เข้าสู่ระบบ</button>
+    </form>
+</body>
+</html>
