@@ -12,9 +12,12 @@ services:
       - DB_USER=postgres
       - DB_PASSWORD=secret
       - SESSION_SECRET=your_session_secret
+      - GOTENBERG_URL=http://pdfservice:1337
     depends_on:
       - dbservice
       - pdfservice
+    networks:
+      - backend
 
   dbservice:
     build:
@@ -33,7 +36,10 @@ services:
       dockerfile: Dockerfile
     privileged: true
     ports:
-      - "1337:3000"
+      - "3000:3000"
+    networks:
+      - backend
 
-volumes:
-  postgres_data:
+networks:
+  backend:
+    driver: bridge
