@@ -246,7 +246,7 @@ app.post('/generate-invoice', requireLogin, async (req, res) => {
     const form = new FormData();
     form.append('index.html', htmlContent, { filename: 'index.html' });
 
-    const response = await fetch(`${process.env.GOTENBERG_URL || 'http://localhost:1337'}/convert/html`, {
+    const response = await fetch(`${process.env.GOTENBERG_URL}/convert/html`, {
       method: 'POST',
       body: form,
       headers: form.getHeaders()

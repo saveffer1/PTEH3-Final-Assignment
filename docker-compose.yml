@@ -12,7 +12,6 @@ services:
       - DB_USER=postgres
       - DB_PASSWORD=secret
       - SESSION_SECRET=your_session_secret
-      - GOTENBERG_URL=http://pdfservice:1337
     depends_on:
       - dbservice
       - pdfservice
